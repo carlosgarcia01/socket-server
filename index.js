@@ -8,7 +8,13 @@ const server = app.listen(app.get('PORT'),()=>{
   console.log(`Server listening in http://localhost:${app.get('PORT')}`);
 })
 
-const io = SocketServer(server);
+const io = SocketServer(server,{
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 
 console.log(`socket escuchando ${io}`);
 
